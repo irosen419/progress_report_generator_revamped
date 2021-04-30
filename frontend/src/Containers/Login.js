@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import Input from '../Components/Input';
 import { Container, FormGroup, Button } from '@material-ui/core';
+import { useStyles } from '../Styles/makeStyles'
 
 export default function Login() {
 
@@ -19,8 +20,10 @@ export default function Login() {
         history.push('/dashboard')
     }
 
+    const { flex } = useStyles()
+
     return (
-        <Container id="login">
+        <Container id="login" className={flex}>
             <FormGroup>
                 <Input _value={full_name} _name="Full Name" _onChange={setFormValues} />
                 <Input _value={email} _name="Email" _onChange={setFormValues} />
