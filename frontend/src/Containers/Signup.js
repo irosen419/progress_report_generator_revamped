@@ -7,12 +7,12 @@ import { useStyles } from '../Styles/makeStyles'
 export default function Signup() {
     const history = useHistory()
 
-    const [credentials, setCredentials] = useState({ full_name: "", email: "" })
-    const { full_name, email } = credentials
+    const [signUpCredentials, setSignUpCredentials] = useState({ first_name: "", last_name: "", email: "" })
+    const { first_name, last_name, email } = signUpCredentials
 
     const setFormValues = (name, value) => {
         name = name.toLowerCase().split(" ").join("_")
-        setCredentials({ ...credentials, [name]: value })
+        setSignUpCredentials({ ...signUpCredentials, [name]: value })
     }
 
     const formSubmit = () => {
@@ -24,8 +24,9 @@ export default function Signup() {
     return (
         <Container className={flex}>
             <FormGroup>
-                <Input _value={full_name} _name="Full Name" _onChange={setFormValues} />
-                <Input _value={email} _name="Email" _onChange={setFormValues} />
+                <Input _value={last_name} _name="Last Name" _onChange={setFormValues} />
+                <Input _value={first_name} _name="First Name" _onChange={setFormValues} />
+                <Input _type="email" _value={email} _name="Email" _onChange={setFormValues} />
                 <Button variant="submit" onClick={formSubmit} >Sign Up</Button>
             </FormGroup>
             <p>Already a member? <Link to="/login">Log In!</Link></p>

@@ -8,12 +8,11 @@ export default function Login() {
 
     const history = useHistory()
 
-    const [credentials, setCredentials] = useState({ full_name: "", email: "" })
-    const { full_name, email } = credentials
+    const [loginCredentials, setLoginCredentials] = useState({ password: "", email: "" })
+    const { password, email } = loginCredentials
 
     const setFormValues = (name, value) => {
-        name = name.toLowerCase().split(" ").join("_")
-        setCredentials({ ...credentials, [name]: value })
+        setLoginCredentials({ ...loginCredentials, [name.toLowerCase()]: value })
     }
 
     const formSubmit = () => {
@@ -25,8 +24,8 @@ export default function Login() {
     return (
         <Container id="login" className={flex}>
             <FormGroup>
-                <Input _value={full_name} _name="Full Name" _onChange={setFormValues} />
-                <Input _value={email} _name="Email" _onChange={setFormValues} />
+                <Input _type="email" _value={email} _name="Email" _onChange={setFormValues} />
+                <Input _type="password" _value={password} _name="Password" _onChange={setFormValues} />
                 <Button variant="submit" onClick={formSubmit} >Login</Button>
             </FormGroup>
             <p>Not a member? <Link to="/signup">Sign Up!</Link></p>
